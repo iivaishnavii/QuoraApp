@@ -1,0 +1,237 @@
+/*.profile  {
+    display:flex;
+    flex-direction:row;
+}*/
+
+#item {
+    width :  82px
+}
+
+
+.hr { 
+  
+    margin-left: 0%;
+    width : 150px;
+    height : 0px;
+    size : 5;
+  } 
+  
+  .width1 {
+    width : 200px;
+    left : 100px;
+    top : 70px;
+    
+  }
+  
+  .width2 {
+    width : 600px;
+    left : 400px;
+    top : 0%;
+  }
+  
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .pull-left {
+    float: left;
+  }
+  
+  .size-sm {
+    font-size : 13px;
+    color : black;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 450;
+  
+  }
+
+  .size-sm1{
+    font-size : 13px;
+    color : grey;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 450;
+  
+  }
+  
+  .size-sm:hover {
+   color : steelblue
+  
+  }
+  
+  .heading {
+    font-size : 15px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+  
+  }
+  
+  
+  
+  
+  .button-content {
+    background-color: white; /* Green */
+   
+    border-style : none;
+   
+    text-align: left;
+  
+    width : 140px;
+    height:  25px;
+    font-size: 16px;
+    
+    
+  }
+  
+  .active:active {
+    background : lightgrey;
+    border-radius: 4px;
+    outline: none;
+  
+    border-style : none;
+  }
+  
+  
+  
+  button:focus{
+    background : lightgrey;
+    border-radius: 4px;
+    outline: none;
+  
+    border-style : none;
+  }
+  
+  
+  button.active {
+    background : lightgrey;
+    border-radius: 4px;
+    outline: none;
+  
+    border-style : none;
+  }
+  
+  
+  
+  .inputBox {
+    border-radius: 4px;
+    border : 1px solid;
+    border-color : lightgray;
+    width : 140px;
+    height:  25px;
+    outline:  none
+  }
+  
+  .pStyle {
+    font-size : 13px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+  
+  }
+  
+  .spacing {
+    line-height: 10%
+  }  
+  
+  
+  
+  
+  body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+  }
+  
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 660px;
+    
+    position: fixed;
+    height: 100%;
+  
+  }
+
+
+  .sidebar-profile {
+    margin: 100;
+    padding: 0;
+    width: 660px;
+    margin-left: 100px;
+    margin-top : 0px;
+    position: 200;
+    height: 100%;
+  
+  }
+
+  .sidebar-profile1 {
+    margin: 0;
+    padding: 0;
+    width: 1000px;
+
+    margin-left: 200px;
+    margin-top : 0px;
+    position: 0;
+    height: 100%;
+  }
+
+  .sidebar-profile11 {
+    margin: 0;
+    padding: 0;
+    width: 660px;
+    margin-left: 1000px;
+    margin-top : 0px;
+    height: 100%;
+    position : 200;
+  }
+  
+  .questionLink {
+      
+  color : rgb(28, 106, 170);
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size : 15px;
+  font-weight: 450;
+  
+  }
+
+  
+  
+  
+  .header {
+    margin-left : 100;
+    width : 744;
+    height : 164;
+  } 
+
+  .width11 {
+    width : 200px;
+    left : 0px;
+    top : 0px;
+    
+    
+  }
+
+  .col-md-3 width12 {
+    left : 1000px;
+    height: 250px;
+  }
+
+  /* .sidebar button.active {
+    background-color : white;
+    color: white;
+  }
+  
+  .sidebar button:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  } */
+  /* 
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  } */
+  

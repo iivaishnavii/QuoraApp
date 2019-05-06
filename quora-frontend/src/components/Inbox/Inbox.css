@@ -1,0 +1,34 @@
+.threads, .messages{
+    height: 500px;
+}
+
+.element > a{
+    text-decoration: none;
+}
+
+.thread{
+    padding: 10px 5px;
+    border-bottom: 0.5px solid rgb(199, 199, 199);
+}
+
+.thread {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.753);
+}
+
+.compose * {
+    margin: 2px;
+}
+
+.text{
+    padding: 5px;
+    border-bottom: 0.5px solid rgba(200, 200, 200);
+}
+
+.textname{
+    font-weight: bold;
+}
+
+.texttime{
+    float: right
+}
