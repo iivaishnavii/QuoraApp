@@ -27,6 +27,7 @@ import editCredentials from '../Profile/editCredentials';
 import Inbox from '../Inbox/Inbox';
 import NewMessage from '../Inbox/NewMessage';
 import Thread from '../Inbox/Thread';
+import deleteAccount from '../Profile/DeleteAccount';
 //import topic from '../Topics/topic'
 
 import searchTopic from '../Profile/UserTopicSearch';
@@ -70,6 +71,7 @@ class Main extends Component {
                 <Route exact path="/conversations" component={Inbox} />
                 <Route path="/conversations/:id" component={Thread} />
                 <Route exact path="/newMessage" component={NewMessage} />
+                <Route exact path="/deleteAccount" component = {deleteAccount} />
         {/* <Route path="/newsfeed/topic" component={topic} />  */}
 
                  

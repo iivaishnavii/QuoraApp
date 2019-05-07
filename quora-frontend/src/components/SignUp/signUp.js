@@ -52,6 +52,7 @@ class SignUp extends Component{
         console.log(response.data)
         if(response.status===200 || response.status===210){
           this.setState({login:true})
+          this.props.history.push('/');
         }
         
       })
@@ -65,7 +66,7 @@ class SignUp extends Component{
     }
     return(
       
-      <div >
+      <div  id = "signUp">
         <body>
         {redirectvar}
         {/* <div class="row">  
@@ -73,7 +74,7 @@ class SignUp extends Component{
         <img className = "SideQuoraPic" style={{ "width" : "413px", "height":"100%"  }} src = {SideQuoraPic}/> 
        </div>    */}
             
-      <div className="mt-5 col-md-15">
+      <div className="mt-5 col-md-15"  id = "signUp" style = {{height : 1000}}>
           <form>
          
           <div className="form-group">

@@ -36,6 +36,7 @@ var searchQuestion = require('./services/searchQuestion')
 var searchTopic = require('./services/searchTopic')
 var createTopic = require('./services/createTopic');
 var upvoteAnswer = require('./services/upvoteAnswers')
+var downvoteAnswer = require('./services/downvoteAnswer')
 
 
 function handleTopicRequest(topic_name,fname){
@@ -78,16 +79,16 @@ handleTopicRequest("createConversation",CreateConversation)
 handleTopicRequest("get-profile",getProfile)
 handleTopicRequest("get-answers",getAnswers) 
 handleTopicRequest("create-question",createQuestion) 
-  handleTopicRequest("signup",signup)
-  handleTopicRequest("get-profile",getProfile)
+handleTopicRequest("signup",signup)
+handleTopicRequest("get-profile",getProfile)
  
- handleTopicRequest("get-questions",getAllQuestions)
+handleTopicRequest("get-questions",getAllQuestions)
 handleTopicRequest("create-topic", createTopic);
 handleTopicRequest("get-questions",getAllQuestions)
- handleTopicRequest("write-answer",writeAnswer)
- handleTopicRequest("notifications",notifications)
- handleTopicRequest("follow-question",followQuestion)
- handleTopicRequest("content",content);
+handleTopicRequest("write-answer",writeAnswer)
+handleTopicRequest("notifications",notifications)
+handleTopicRequest("follow-question",followQuestion)
+handleTopicRequest("content",content);
 handleTopicRequest('get_activity',getActivity)
 handleTopicRequest("search-question",searchQuestion)
 handleTopicRequest("search-topic",searchTopic) 
@@ -100,7 +101,7 @@ handleTopicRequest("user_answers",userAnswers);
 handleTopicRequest("user_questions",userQuestions)
 handleTopicRequest("user_bookmarks",userBookmarks)
 handleTopicRequest("update_answer",updateAnswer)
-
+handleTopicRequest("downvoteAnswer", downvoteAnswer)
 
 
 

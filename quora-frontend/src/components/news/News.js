@@ -50,6 +50,31 @@ class News extends Component {
     }
 
 
+    handledownVote=(event,questionid,answerid)=>{
+        if(event.currentTarget.dataset.id==answerid)
+        {
+            console.log("clicked"+questionid)
+             var data = {
+            "answerid":answerid,
+            "questionid":questionid
+            }
+        axios.post('http://localhost:4000/downvoteAnswer',data)
+        .then(res=>
+            {
+                console.log("Success"+res)
+                //this.setState({upvotedItem:res})
+                window.location.reload();
+
+            }
+            
+          )
+          .catch(res=>console.log("Fail"))
+        }
+       
+       
+    }
+
+
     render() { 
  
         
@@ -79,7 +104,8 @@ class News extends Component {
                         <button class="ml-3 transButton" style={{"font-size":"15px"}}><label class="QuoraLabels"><b>Share</b></label><i class="fa fa-share-square ml-1"></i></button>
                         <label class="ml-1">6</label>
                         
-                        <button class="ml-3 transButton" style={{"font-size":"15px","float":"right"}}><label class="QuoraLabels"><b>Downvote</b></label> <i class="fa fa-arrow-circle-down"></i></button>
+                        <button class="ml-3 transButton" style={{"font-size":"15px","float":"right"}} onClick={e=>{this.handledownVote(e,question._id,question.Answers[0]._id)}} data-id={question.Answers[0]._id} ><label class="QuoraLabels"><b>Downvote</b></label> <i class="fa fa-arrow-circle-down"></i> <label class="ml-1"> {question.Answers[0].downVotes}</label></button>
+                        
                     </div>
                     <div class='card-header'>
                         <input type="text" style={{"width":"750px"}} placeholder="Add comment"/>

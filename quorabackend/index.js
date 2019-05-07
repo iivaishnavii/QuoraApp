@@ -61,10 +61,12 @@ var getActivity = require('./routes/getActivity.js')
 var searchTopic = require('./routes/searchTopic');
 var redisTest = require('./routes/redisTest');
 var upvoteAnswers= require('./routes/upvoteAnswers')
+var downvoteAnswers = require('./routes/downVoteAnswer')
 
 app.use('/login',login)
 app.use('/signUp',signUp)
 app.use('/upvoteAnswer',upvoteAnswers)
+app.use('/downvoteAnswer',downvoteAnswers)
 app.use('/updateProfile',profile)
 //app.use(createConversation);
 //app.use(getConversation);
