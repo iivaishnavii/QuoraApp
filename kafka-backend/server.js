@@ -77,24 +77,24 @@ function handleTopicRequest(topic_name,fname){
 //first argument is topic namex
 //second argument is a function that will handle this topic request
 
-//   handleTopicRequest("login",login)
-// handleTopicRequest("upvoteAnswer",upvoteAnswer)
-// handleTopicRequest("update-profile",profile)
-// handleTopicRequest("delete-user",deleteUser)
-// handleTopicRequest("createConversation",CreateConversation)
-// handleTopicRequest("get-profile",getProfile)
-// handleTopicRequest("get-answers",getAnswers) 
-// handleTopicRequest("create-question",createQuestion) 
-//   handleTopicRequest("signup",signup)
-  handleTopicRequest("get-profile",getProfile)
-// handleTopicRequest("update-profile",profile)
-//   handleTopicRequest("get-questions",getAllQuestions)
-//   handleTopicRequest("create-topic", createTopic);
-//  handleTopicRequest("get-questions",getAllQuestions)
-//  handleTopicRequest("write-answer",writeAnswer)
-//  handleTopicRequest("notifications",notifications)
-//  handleTopicRequest("getTopics",getTopics)
-//  handleTopicRequest("getAllTopics",getAllTopics)
+  handleTopicRequest("login",login)
+handleTopicRequest("upvoteAnswer",upvoteAnswer)
+handleTopicRequest("update-profile",profile)
+handleTopicRequest("delete-user",deleteUser)
+handleTopicRequest("createConversation",CreateConversation)
+handleTopicRequest("get-profile",getProfile)
+handleTopicRequest("get-answers",getAnswers) 
+handleTopicRequest("create-question",createQuestion) 
+  handleTopicRequest("signup",signup)
+ handleTopicRequest("get-profile",getProfile)
+handleTopicRequest("update-profile",profile)
+  handleTopicRequest("get-questions",getAllQuestions)
+  handleTopicRequest("create-topic", createTopic);
+ handleTopicRequest("get-questions",getAllQuestions)
+ handleTopicRequest("write-answer",writeAnswer)
+ handleTopicRequest("notifications",notifications)
+ handleTopicRequest("getTopics",getTopics)
+ handleTopicRequest("getAllTopics",getAllTopics)
  handleTopicRequest("topUpvotes",topUpvotes)
  handleTopicRequest("topDownvotes",topDownVotes)
  handleTopicRequest("topBookmarks",topBookmarks)
@@ -103,30 +103,30 @@ function handleTopicRequest(topic_name,fname){
 
 
 
-//  handleTopicRequest("follow-question",followQuestion)
-//  handleTopicRequest("content",content);
-// handleTopicRequest('get_activity',getActivity)
-// handleTopicRequest("search-question",searchQuestion)
-// handleTopicRequest("search-topic",searchTopic) 
+ handleTopicRequest("follow-question",followQuestion)
+ handleTopicRequest("content",content);
+handleTopicRequest('get_activity',getActivity)
+handleTopicRequest("search-question",searchQuestion)
+handleTopicRequest("search-topic",searchTopic) 
 
 
 
 
-// handleTopicRequest("get_following",following)
-// handleTopicRequest("user_answers",userAnswers);
-// handleTopicRequest("user_questions",userQuestions)
-// handleTopicRequest("user_bookmarks",userBookmarks)
-// handleTopicRequest("update_answer",updateAnswer)
-// handleTopicRequest("downvoteAnswer", downvoteAnswer)
+handleTopicRequest("get_following",following)
+handleTopicRequest("user_answers",userAnswers);
+handleTopicRequest("user_questions",userQuestions)
+handleTopicRequest("user_bookmarks",userBookmarks)
+handleTopicRequest("update_answer",updateAnswer)
+handleTopicRequest("downvoteAnswer", downvoteAnswer)
 
 
 
-//  handleTopicRequest("followTopic",FollowTopic)
-// handleTopicRequest("followUser",FollowUser)
-// handleTopicRequest("sendMessage",SendMessage)
-// handleTopicRequest("getFollowers",GetFollowers)
-// handleTopicRequest("getMessage",GetMessage)
-// handleTopicRequest("getConversation",GetConversation)   
+ handleTopicRequest("followTopic",FollowTopic)
+handleTopicRequest("followUser",FollowUser)
+handleTopicRequest("sendMessage",SendMessage)
+handleTopicRequest("getFollowers",GetFollowers)
+handleTopicRequest("getMessage",GetMessage)
+handleTopicRequest("getConversation",GetConversation)   
 
 
 
