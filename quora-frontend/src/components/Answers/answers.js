@@ -213,7 +213,7 @@ class answer extends Component {
     render() { 
         let redirectvar = null
         if(this.state.redirectToMyAnswersPage === true)
-            redirectvar = <Redirect to="/profile/answers" />
+            redirectvar = <Redirect to="/newsfeed" />
         let displayQuestion = <div className="mt-3 questioncss"><b>{this.state.question}</b></div>
         let displayanswedraft = null;
         if(this.state.showAnswerDialog === true)

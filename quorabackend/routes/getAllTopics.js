@@ -21,7 +21,7 @@ router.get('/',function(req,res){
             else{
                 console.log("fetched all topics"+result)
                 res.writeHead(200,{
-                    'Content-Type' : 'text/plain'
+                    'Content-Type' : 'application/json'
                 })
              
                 res.end(JSON.stringify(result));

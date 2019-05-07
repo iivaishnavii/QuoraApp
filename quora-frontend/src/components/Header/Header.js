@@ -159,7 +159,7 @@ export default class Header extends Component {
                  <Search></Search>
                 {/* </form> */}
                 <div >
-                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                <Dropdown  style = {{width : 55}}isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle caret>
           Profile
         </DropdownToggle>
