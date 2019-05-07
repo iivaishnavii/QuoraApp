@@ -44,6 +44,7 @@ var createTopic = require('./services/createTopic');
 var upvoteAnswer = require('./services/upvoteAnswers')
 var downvoteAnswer = require('./services/downvoteAnswer')
 var addcomment = require('./services/addcomment')
+var bookmarkanswers = require('./services/bookmarkanswers')
 
 
 function handleTopicRequest(topic_name,fname){
@@ -109,6 +110,8 @@ handleTopicRequest("update-profile",profile)
 handleTopicRequest('get_activity',getActivity)
 handleTopicRequest("search-question",searchQuestion)
 handleTopicRequest("search-topic",searchTopic) 
+handleTopicRequest("bookmark-answers",bookmarkanswers) 
+
 
 
 
