@@ -3,6 +3,8 @@ import axios from 'axios';
 import Header from '../Header/Header'
 import '../Answers/answers.css'
 import { Redirect } from 'react-router'
+import {Modal,Button} from 'react-bootstrap'
+
 
 class answer extends Component {
     constructor(props)
@@ -25,7 +27,11 @@ class answer extends Component {
             img2: '',
             img3 : '',
             comment :[],
-            Email: localStorage.getItem("email")
+            Email: localStorage.getItem("email"),
+            editAnswer:0,
+            answeridedited:0,
+            editAnswerText :'',
+            FollowLabel:'Follow'
         }
         console.log("Props"+JSON.stringify(props.location.state.questionid))
     }
@@ -138,7 +144,7 @@ class answer extends Component {
         {
             var data={
                 "answer" : this.state.answer,
-                "owner" : "Shivani@gmail.com",
+                "owner" : localStorage.getItem("email"),
                 "isAnonymous":1,
                 "date":"05-05-2019",
                 "question":this.state.question,
@@ -158,7 +164,7 @@ class answer extends Component {
         {
             var data={
                 "answer" : this.state.answer,
-                "owner" : "Shivani@gmail.com",
+                "owner" : localStorage.getItem("email"),
                 "isAnonymous":0,
                 "date":"05-05-2019",
                 "question":this.state.question,
@@ -196,6 +202,19 @@ class answer extends Component {
           this.setState({showAnswerDialog:true})
 
       }
+      editAnswer=(event,answerid)=>{
+          //console.log("Edit Answer"+JSON.stringify(e.target.id))
+        //   if(event.currentTarget.dataset.id==answerid)
+        //   {
+        //       //console.log("clicked"+questionid)
+        //       console.log("Edit Away"+event.currentTarget.dataset.id)
+
+        //     //  this.setState({"editAnswer":1})
+
+        //   }
+        this.setState({editAnswer:1})
+        this.setState({answeridedited:answerid})
+      }
       renderAnswer=(data,index)=>{
          if(data[0].img.data[0]!=0)
          {
@@ -203,6 +222,7 @@ class answer extends Component {
             var base64Flag = 'data:image/jpeg;base64,';
 
          }
+        }
          addcomment=(e)=>{
             this.setState({
                 comment : e.target.value
@@ -268,14 +288,43 @@ class answer extends Component {
     
         }
           
-        //  var imageStr = this.arrayBufferToBase64(data[0].img.data.data);
-        //  console.log("Image String"+imageStr)
-        //  console.log("index"+index)
-        //  var left = 'img'+index;
-         //console.log(left+imageStr)
-         //this.setState({left:base64Flag+imageStr})
-//return(<img src={this.state.img}/>)
+       
+      
+      handleCloseofEditAnswer=(e)=>{
+          this.setState({editAnswer:0})
       }
+      updateAnswer=(e)=>{
+          console.log("Update Answer")
+          //give in data
+        //   var data={
+        //       questionId : 
+        //answerid
+        //text: 
+        //   }
+        //   axios.post("http://localhost:4000/updateAnswer",data)
+        //   .then(res=>console.log(res))
+        //   .catch(err=>console.log(err))
+
+          this.setState({ editAnswer: 0 });
+      window.location.reload();
+       
+      }
+      textforEditAnswer=(e)=>{
+          this.setState({editAnswerText:e.target.value})
+          console.log(e.target.value)
+      }
+      followQuestion=(e)=>{
+          var data={
+              "Email":localStorage.getItem("email"),
+              "question":this.state.question
+          }
+          axios.post('http://localhost:4000/followQuestion',data)
+          .then(res=>{console.log(res)
+        this.setState({"FollowLabel":"Followed"})
+        })
+          .catch(err=>console.log(err))
+      }
+     
     render() { 
         let redirectvar = null
         if(this.state.redirectToMyAnswersPage === true)
@@ -307,6 +356,7 @@ class answer extends Component {
                             <img class="pic ml-3" src="https://cdn2.stylecraze.com/wp-content/uploads/2013/07/10-Pictures-Of-Katy-Perry-Without-Makeup.jpg"/>
                             <p class="ml-2">{answer.owner}</p>
                         </div>
+                        
                         <p style={{"backgroundColor":"bg-light"}}>{answer.answer}</p>
                         {/*this.renderAnswer(answer.images,index)*/}
                         <div>
@@ -320,7 +370,27 @@ class answer extends Component {
                         <label class="ml-1">6</label>
                         
                         <button class="ml-3 transButton" style={{"font-size":"15px","float":"right"}}><label class="QuoraLabels"><b>Downvote</b></label> <i class="fa fa-arrow-circle-down"></i></button>
-                        <button class="transButton" style={{"float":"right"}}><i class="fas fa-ellipsis-h ml-3" ></i></button>
+                        <button class="transButton" style={{"float":"right"}} onClick={e=>{this.editAnswer(e,answer._id)}} data-id={answer._id}
+                        
+                        >Edit Answer</button>
+                        <Modal show={this.state.editAnswer} onHide={this.handleCloseofEditAnswer}>
+                        <Modal.Header closeButton>
+                          <Modal.Title style={{"color":"#b92b27","font-weight":500,"font-family":"Helvetica Neue,Helvetica,Arial,sans-serif","font-size": "15px"}}>Edit your Answer</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                          <input type="text" placeholder="Edit your answer" onChange={this.textforEditAnswer}></input>
+                          
+                        </Modal.Body>
+                       
+                        <Modal.Footer>
+                          <Button variant="primary" onClick={this.updateAnswer}>Update</Button>
+                          <Button variant="secondary" onClick={this.handleCloseofEditAnswer}>
+                            Cancel
+                          </Button>
+                          
+                        </Modal.Footer>
+                      </Modal>
+                        
                         <div class='card-header'>
                         <input type="text" style={{"width":"800px"}} placeholder="Add comment" onChange={this.addcomment}/>
                         <button class="btn btn-info" value={answer._id} onClick={()=>this.handleaddcomment(answer._id)} >Add Comment</button>
@@ -342,7 +412,7 @@ class answer extends Component {
 
         let answerbar = <div class="container mt-0" ref={this.container}>
             <button class="transButton ml-3" onClick={this.writeAnswer}>Answer</button>
-            <button class="transButton ml-3">Follow</button>
+            <button class="transButton ml-3" onClick={this.followQuestion}>{this.state.FollowLabel}</button>
             <button class="transButton ml-3">Request</button>
             <button class="transButton" style={{"float":"right"}} onClick={this.handleButtonClick} name="ellipsis"><i class="fas fa-ellipsis-h ml-3" ></i></button>
             {this.state.open && (

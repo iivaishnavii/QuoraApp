@@ -54,6 +54,7 @@ topic = (e) => {
                 <br/>
                </div>
             );
+            this.state.topics.concat(<a href="http://localhost:3000/newsfeed/topic/MachineLearning">Bookmarked Answers</a>)
         })
 
         return (
@@ -64,7 +65,7 @@ topic = (e) => {
                       
 
                         {topics}
-   
+                        <button><a href="http://localhost:3000/newsfeed/topic/MachineLearning">Bookmarked Answers</a></button>
  
   
                        

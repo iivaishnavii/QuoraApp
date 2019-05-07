@@ -90,7 +90,7 @@ class Search extends Component {
                             else
                             {
                                 this.setState({type:opt.value.type})
-                                this.setState({topic:opt.value.id},function () {
+                                this.setState({topic:opt.value.topic},function () {
                                     console.log("State"+this.state.questionid);
                                      });
                             }
@@ -110,7 +110,7 @@ class Search extends Component {
             <a href={`http://localhost:3000/profile/answers/${this.state.email}`}>
             <button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></a> 
             :this.state.type=='topic'?
-            <a href='http://localhost:3000/newsfeed/topic/running'><button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></a> 
+            <a href={`http://localhost:3000/newsfeed/topic/${this.state.topic}`}><button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></a> 
             :<Link to={{pathname : "/answers",state :{'questionid':this.state.questionid}} }  > 
             <button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></Link>  
             }        
