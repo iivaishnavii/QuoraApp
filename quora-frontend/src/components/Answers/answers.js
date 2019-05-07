@@ -32,7 +32,7 @@ class answer extends Component {
             answeridedited:0,
             editAnswerText :'',
             FollowLabel:'Follow',
-            Email:localStorage.getItem('email'),
+            Email:localStorage.getItem('email'),		
             comment : []
         }
         console.log("Props"+JSON.stringify(props.location.state.questionid))
@@ -334,6 +334,67 @@ class answer extends Component {
 
     }
      
+      addcomment=(e)=>{		
+        this.setState({		
+            comment : e.target.value		
+        		
+        })		
+        console.log(this.state.comment)		
+        }		
+      handleaddcomment= (event) =>{		
+        console.log("buttonclicked")		
+        console.log(event)		
+    		
+       		
+        var url=  ROOT_URL + '/addcomments'		
+        var data = {		
+         "answerid" : event, 		
+         "email": this.state.Email,		
+         "comment":this.state.comment		
+        }		
+        console.log(url)		
+        console.log("data:",data)		
+        		
+         axios.post(url,data)		
+         .then(response => {		
+             console.log("got response:",response)		
+             var newResult = this.state.results;		
+             for(var i=0;i<newResult.length;++i){		
+                 if(newResult[i]._id==event){		
+                     console.log("Here in the id")		
+                     newResult[i]["comment"].push({username:"Shivani",comment:this.state.comment})		
+                 }		
+             }		
+             console.log("After the find ")		
+             console.log(newResult)		
+             this.setState({		
+                 results : newResult		
+             })		
+            //  window.location.href=window.location.href		
+         })		
+         .catch(response => {		
+            // console.log(response.toString())		
+         })		
+    		
+    		
+    }		
+    bookmark=(event)=>{		
+        console.log("Bookmarkclicked")		
+        console.log(event)		
+    		
+        var data = {		
+            "answerid" : event, 		
+            "Email": this.state.Email		
+        }		
+        var url=  ROOT_URL + '/bookmarkanswers'		
+        axios.post(url,data)		
+         .then(response => {		
+             console.log("got response:",response)		
+         })		
+         .catch(response => {		
+            // console.log(response.toString())		
+         })		
+    }
     render() { 
         let redirectvar = null
         if(this.state.redirectToMyAnswersPage === true)
@@ -399,15 +460,22 @@ class answer extends Component {
                           
                         </Modal.Footer>
                       </Modal>
-
                       <button class="ml-2 btn-primary" onClick ={()=>this.bookmark(answer._id)} >Bookmark</button>
+                        
                         <div class='card-header'>
-                                    <input type="text" style={{"width":"800px"}} placeholder="Add comment" onChange={this.addcomment}/>
-                                    <button class="btn btn-info" value={answer._id} onClick={()=>this.handleaddcomment(answer._id)} >Add Comment</button>
-                                <h6><strong>Previous Comments</strong></h6>
-                                {answer.comments.map(item => {
-                            return      <p><strong>{item["username"]}</strong> : {item["comment"]}</p>
-                            })}
+                          {/*  <input type="text" style={{"width":"800px"}} placeholder="Add comment"/>*/}
+                          <input type="text" style={{"width":"800px"}} placeholder="Add comment" onChange={this.addcomment}/>		  
+                           <input type="text" style={{"width":"800px"}} placeholder="Add comment"/>
+                                    <button class="btn btn-info" value={answer._id} onClick={()=>this.handleaddcomment(answer._id)} >Add Comment</button>		    
+                                <h6><strong>Previous Comments</strong></h6>	
+                                {
+                                answer.comments===undefined?console.log("Yes"):  answer.comments.map(item => {		
+                                    return      <p><strong>{item["username"]}</strong> : {item["comment"]}</p>		
+                                    })
+                                // console.log("Length of answers.comments"+answer.comments)
+                                }	
+                               
+    
                         </div>
                         
                         <hr></hr>
