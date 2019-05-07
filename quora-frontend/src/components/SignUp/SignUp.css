@@ -1,0 +1,10 @@
+.wrapper {
+    font-size:0; 
+}
+.image, .form {
+    font-size: 100%;
+}
+
+body{
+    background-image:url("dims.jpeg");
+}

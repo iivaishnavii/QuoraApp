@@ -6,6 +6,7 @@ import {rooturl} from '../../config/settings';
 import SideQuoraPic from '../../images/SideQuoraPic.png';
 import RightQuoraPic from '../../images/RightQuoraPic.png'
 import { Redirect } from 'react-router';
+import '../SignUp/SignUp.css'
 class SignUp extends Component{
   state={
     Name:"",
@@ -29,10 +30,9 @@ class SignUp extends Component{
   }
   
   register=(e)=>{
-    e.preventDefault();
     if(this.state.Name===""||this.state.Email===""||this.state.Password==="")
     {
-        
+        e.preventDefault()
         console.log("Cannot be left empty")
         this.setState({emptyValues :true})
     }
@@ -51,8 +51,7 @@ class SignUp extends Component{
       }).then(response=>{
         console.log(response.data)
         if(response.status===200 || response.status===210){
-          console.log("in login status")
-         this.props.history.push('/');
+          this.setState({login:true})
         }
         
       })
@@ -62,24 +61,25 @@ class SignUp extends Component{
   render(){
     let redirectvar = null;
     if(this.state.login === true){
-      console.log("in login true")
       redirectvar = <Redirect to='/' />
     }
     return(
-      <div>
+      
+      <div >
+        <body>
         {redirectvar}
-        <div class="row">  
-       {/* <div class="col-md-4">
-        <img className = "SideQuoraPic" style={{ "width" : "413px"  }} src = {SideQuoraPic}/> 
-       </div>   
-             */}
-      <div className="mt-5 col-md-4">
+        {/* <div class="row">  
+       <div class="col-md-4">
+        <img className = "SideQuoraPic" style={{ "width" : "413px", "height":"100%"  }} src = {SideQuoraPic}/> 
+       </div>    */}
+            
+      <div className="mt-5 col-md-15">
           <form>
-
+         
           <div className="form-group">
               <div class="row">
                       <div class="col-4"></div>
-                      <input type="text" class="form-control col-4" id="Name" onChange={this.handleFirstName}  placeholder="Enter Name" />
+                      <input type="text" class="form-control col-4" id="Name" onChange={this.handleFirstName}  placeholder="Enter FirstName" />
                       <div class="col-4"></div>
               </div>
           </div>
@@ -87,7 +87,7 @@ class SignUp extends Component{
           <div className="form-group">
               <div class="row">
                   <div class="col-4"></div>
-                  <input type="text" className="form-control col-4" id="Email" onChange={this.handleEmail} placeholder="Enter your email"/>
+                  <input type="email" className="form-control col-4" id="Email" onChange={this.handleEmail} placeholder="Enter your email"/>
                   <div class="col-4"></div>
               </div>
               
@@ -103,7 +103,7 @@ class SignUp extends Component{
           <div class="row" >
               
                   <div class="col-4"></div>
-                  <button type="submit" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0 col-4" onClick={this.register}>Register</button>
+                  <button type="submit" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0 col-4" onClick={this.register}>Sign Up</button>
                   <div class="col-4"></div>
               
           </div>
@@ -111,13 +111,16 @@ class SignUp extends Component{
 
           </form>
 
-        </div>
-        {/* <div class="col-md-4"> 
+        {/* </div>
+        <div class="col-md-4"> 
           <img className = "RightQuoraPic" style={{ "width" : "351px" ,"height":"100%"}} align="right" src = {RightQuoraPic}/> 
-       </div>  
-        */}
+       </div>  */}
+       
+       
+       
+       
   </div>  
-
+  </body>
       </div>
       
   
