@@ -12,7 +12,7 @@ class News extends Component {
     }
     componentDidMount(){
         var token = localStorage.getItem("token")
-        var url = `http://localhost:4000/getAllQuestions`
+        var url = `${ROOT_URL}/getAllQuestions`
          console.log(url)  
          axios.get(url,{headers : {"Authorization": `Bearer ${token}`}}).
          then(response => {
@@ -33,7 +33,7 @@ class News extends Component {
             "answerid":answerid,
             "questionid":questionid
             }
-        axios.post('http://localhost:4000/upvoteAnswer',data)
+        axios.post('http://'+rooturl+':4000/upvoteAnswer',data)
         .then(res=>
             {
                 console.log("Success"+res)

@@ -16,7 +16,7 @@ class UserQuestions extends Component {
     componentDidMount(){
        
         var token = localStorage.getItem("token")
-        var url = `http://localhost:4000/userQuestions`
+        var url = `${ROOT_URL}/userQuestions`
          console.log(url)  
          var data = {
            //Email : "Shivani@gmail.com"

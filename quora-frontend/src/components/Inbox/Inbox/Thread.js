@@ -4,6 +4,7 @@ import Scroll from 'react-scroll';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./Inbox.css";
+import { ROOT_URL } from '../../config/URLsettings';
 
 var Element = Scroll.Element;
 
@@ -35,7 +36,7 @@ export default class Thread extends Component {
             text: this.state.message,
             time: time
         }
-        axios.post(`http://localhost:4000/conversations/${this.state.id2}`, data)
+        axios.post(`${ROOT_URL}/conversations/${this.state.id2}`, data)
         .then((response)=>{
             if(response.data.message==="error") alert("Something went wrong.")
             else if(response.data.message==="success"){
@@ -52,7 +53,7 @@ export default class Thread extends Component {
 
     componentDidMount(){
         //axios.get(`http://localhost:4000/conversations/${this.state.id2}/${localStorage.getItem('email')}`)
-        axios.get(`http://localhost:4000/conversations/${this.state.id2}/Shivani@gmail.com`)
+        axios.get(`${ROOT_URL}/conversations/${this.state.id2}/Shivani@gmail.com`)
         .then((response) => {
             console.log(response.data.data);
             this.setState({ texts: response.data.data})

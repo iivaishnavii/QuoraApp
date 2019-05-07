@@ -8,12 +8,13 @@ import RightQuoraPic from '../../images/RightQuoraPic.png'
 import { Redirect } from 'react-router';
 import Header from '../Header/Header';
 import {Link} from 'react-router-dom';
+import { ROOT_URL } from '../../config/URLsettings';
 
 class DeleteAccount extends Component{
  
     deleteUser = (e) => {
         e.preventDefault();
-        axios.delete(`http://localhost:4000/delete/${localStorage.getItem('email')}`)
+        axios.delete(`${ROOT_URL}/delete/${localStorage.getItem('email')}`)
         .then((response)=>{
             this.props.history.push("/");
         })

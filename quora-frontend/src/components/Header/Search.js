@@ -3,6 +3,8 @@ import axios from 'axios'
 import Select from 'react-select'
 import {Link} from 'react-router-dom';
 import './Search.css'
+import {rooturl} from '../../config/settings';
+import { ROOT_URL } from '../../config/URLsettings';
 
 
 class Search extends Component {
@@ -14,7 +16,7 @@ class Search extends Component {
     componentDidMount(){
         console.log(this.state.questionid)
         var results=[];
-        axios.get('http://localhost:4000/getAllQuestions').
+        axios.get('http://'+ rooturl + ':4000/getAllQuestions').
         then(questions=>{
            console.log("Search"+JSON.stringify(questions))
            // var results=[];
@@ -28,7 +30,7 @@ class Search extends Component {
                 results.push(obj)
             })
         })
-        axios.get('http://localhost:4000/getUsers').
+        axios.get('http://' + rooturl + ':4000/getUsers').
         then(users=>{
             console.log("Set of users"+JSON.stringify(users));
             users.data.forEach(ele=>{
@@ -39,7 +41,7 @@ class Search extends Component {
         })
         .catch(err=>console.log(err))
 
-        axios.get('http://localhost:4000/getAllTopics').
+        axios.get('http://' + rooturl + ':4000/getAllTopics').
         then(topics=>{
             console.log("Set of topics"+JSON.stringify(topics));
             topics.data.forEach(ele=>{
@@ -57,7 +59,7 @@ class Search extends Component {
 
     handleSearch=(e)=>{
         console.log("searching.."+this.state.questionid)
-        window.open('http://localhost:3000/answers', "_self")
+        window.open('http://'+ rooturl +':3000/answers', "_self")
     }
     
     render() { 
@@ -107,10 +109,10 @@ class Search extends Component {
 
             <div  className = 'col-sm-4' >
             {this.state.type=='person'?
-            <a href={`http://localhost:3000/profile/answers/${this.state.email}`}>
+            <a href={`${ROOT_URL}/profile/answers/${this.state.email}`}>
             <button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></a> 
             :this.state.type=='topic'?
-            <a href={`http://localhost:3000/newsfeed/topic/${this.state.topic}`}><button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></a> 
+            <a href={`${ROOT_URL}/newsfeed/topic/${this.state.topic}`}><button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></a> 
             :<Link to={{pathname : "/answers",state :{'questionid':this.state.questionid}} }  > 
             <button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></Link>  
             }        

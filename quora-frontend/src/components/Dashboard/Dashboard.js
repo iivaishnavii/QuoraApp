@@ -68,7 +68,7 @@ class Dashboard extends Component {
 
 
         const data = {
-            Email : "jessicatony@gmail.com"
+            Email : localStorage.getItem('email')
         }
        
 

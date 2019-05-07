@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import { ROOT_URL } from '../../config/URLsettings';
 
 import '../news/News.css'
 class UserQuestions extends Component {
@@ -16,7 +17,7 @@ class UserQuestions extends Component {
     componentDidMount(){
        
         var token = localStorage.getItem("token")
-        var url = `http://localhost:4000/userQuestions`
+        var url = `${ROOT_URL}/userQuestions`
          console.log(url)  
          var data = {
           

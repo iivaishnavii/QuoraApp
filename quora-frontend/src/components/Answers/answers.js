@@ -4,6 +4,8 @@ import Header from '../Header/Header'
 import '../Answers/answers.css'
 import { Redirect } from 'react-router'
 import {Modal,Button} from 'react-bootstrap'
+import { ROOT_URL } from '../../config/URLsettings';
+
 
 
 class answer extends Component {
@@ -45,7 +47,7 @@ class answer extends Component {
     {
         console.log("Inside component did mount"+this.state.questionId)
         console.log("Question ID"+this.state.questionId)
-        var url = `http://localhost:4000/getAnswers/`+this.state.questionId
+        var url = `${ROOT_URL}/getAnswers/`+this.state.questionId
         console.log(url)  
         axios.get(url).
         then(response => {
@@ -80,7 +82,7 @@ class answer extends Component {
             "answerid":answerid,
             "questionid":this.state.questionId
             }
-        axios.post('http://localhost:4000/upvoteAnswer',data)
+        axios.post('${ROOT_URL}/upvoteAnswer',data)
         .then(res=>
             {
                 console.log("Success"+res)
@@ -130,7 +132,7 @@ class answer extends Component {
         data.append('selectedFile', this.state.selectedFile)
         console.log('Selected File'+this.state.selectedFile)
         var num = Math.floor((Math.random() * 1000) + 1);        
-        axios.post('http://localhost:4000/addpicforanswer/'+num,data)
+        axios.post(ROOT_URL + '/addpicforanswer/'+num,data)
         .then(res=>{
             console.log("Upload successfully")
             this.setState({imageId:num})
@@ -151,7 +153,7 @@ class answer extends Component {
                 
             }
             console.log("In anonymous block")
-            axios.post('http://localhost:4000/writeAnswer/',data)
+            axios.post( ROOT_URL + '/writeAnswer/',data)
             .then(response=>{
                 console.log("Wrote an Answer Successfully")
                 this.setState({redirectToMyAnswersPage:true})
@@ -170,7 +172,7 @@ class answer extends Component {
                 "question":this.state.question,
                 
             }
-            axios.post('http://localhost:4000/writeAnswer/',data)
+            axios.post( ROOT_URL + '/writeAnswer/',data)
             .then(response=>{
                 console.log("Wrote an Answer Successfully")
                 this.setState({redirectToMyAnswersPage:true})
@@ -259,7 +261,7 @@ class answer extends Component {
               "Email":localStorage.getItem("email"),
               "question":this.state.question
           }
-          axios.post('http://localhost:4000/followQuestion',data)
+          axios.post( ROOT_URL + '/followQuestion',data)
           .then(res=>{console.log(res)
         this.setState({"FollowLabel":"Followed"})
         })
@@ -279,7 +281,7 @@ class answer extends Component {
         console.log(event)
     
        
-        var url='http://localhost:4000/addcomments'
+        var url=  ROOT_URL + '/addcomments'
         var data = {
          "answerid" : event, 
          "email": this.state.Email,
@@ -321,7 +323,7 @@ class answer extends Component {
             "answerid" : event, 
             "Email": this.state.Email
         }
-        var url='http://localhost:4000/bookmarkanswers'
+        var url=  ROOT_URL + '/bookmarkanswers'
         axios.post(url,data)
          .then(response => {
              console.log("got response:",response)

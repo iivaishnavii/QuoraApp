@@ -30,10 +30,21 @@ app.use(session({
     duration: 60 * 60 * 100,
     activeDuration: 5 * 60 * 100
   }));
-app.use(cors({origin:'*',credentials:true}))
+//app.use(cors({origin:'*',credentials:true}))
+//app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'http://18.220.118.8:3000', credentials: true }));
 
 require('./config/passport')(passport);
 
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'http://18.220.118.8:3000');
+   // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+    res.setHeader('Cache-Control', 'no-cache');
+    next();
+  });
   
 app.use(bodyParser.json())
 

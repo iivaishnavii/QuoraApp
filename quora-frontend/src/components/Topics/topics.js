@@ -45,6 +45,8 @@ topic = (e) => {
 }
 
     render() { 
+      let URL = "http://"+rooturl+":3000/newsfeed/topic/MachineLearning"
+      let bookmarkURL = "http://"+ rooturl+ ":3000/bookmarks"
 
         let topics = this.state.topics.map((topic) => {
             return(
@@ -54,7 +56,7 @@ topic = (e) => {
                 <br/>
                </div>
             );
-            this.state.topics.concat(<a href="http://localhost:3000/newsfeed/topic/MachineLearning">Bookmarked Answers</a>)
+            this.state.topics.concat(<a href="/newsfeed/topic/MachineLearning">Bookmarked Answers</a>)
         })
 
         return (
@@ -65,7 +67,7 @@ topic = (e) => {
                       
 
                         {topics}
-                        <button><a href="http://localhost:3000/bookmarks">Bookmarked Answers</a></button>
+                        <button><a href="/bookmarks">Bookmarked Answers</a></button>
  
   
                        

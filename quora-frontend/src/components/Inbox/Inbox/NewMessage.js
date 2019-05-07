@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 import "./Inbox.css";
+import { rooturl } from '../../../config/settings';
 
 var Element = Scroll.Element;
 
@@ -48,14 +49,14 @@ export default class NewMessage extends Component {
         const d = new Date();
         const time = d.toDateString()+" "+d.toLocaleTimeString();
         let data = {
-            from: "Shivani@gmail.com",
-           //from : localStorage.getItem('email'),
+            
+           from : localStorage.getItem('email'),
             to: this.state.to,
           
             msg: this.state.msg,
             time: time
         }
-        axios.post("http://localhost:4000/conversations", data)
+        axios.post("http://" + rooturl +":4000/conversations", data)
         .then((response) => {
             if(response.data.message==="error") alert("Something went wrong.")
             else if(response.data.message==="success"){
@@ -67,7 +68,7 @@ export default class NewMessage extends Component {
     }
 
     componentDidMount(){
-        axios.get("http://localhost:4000/conversations")
+        axios.get("http://" + rooturl + ":4000/conversations")
         .then((result) => {
            
             this.setState({ threads: result.data.data})

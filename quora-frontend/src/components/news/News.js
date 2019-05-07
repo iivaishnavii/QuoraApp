@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-
+import { ROOT_URL } from '../../config/URLsettings';
 import '../news/News.css'
+import {rooturl} from '../../config/settings';
 class News extends Component {
     state = {  
         news : [],
@@ -12,7 +13,7 @@ class News extends Component {
     }
     componentDidMount(){
        // var token = localStorage.getItem("token")
-        var url = `http://localhost:4000/getAllQuestions`
+        var url = `${ROOT_URL}/getAllQuestions`
          console.log(url)  
         // axios.get(url,{headers : {"Authorization": `Bearer ${token}`}}).
         axios.get(url).
@@ -34,7 +35,7 @@ class News extends Component {
             "answerid":answerid,
             "questionid":questionid
             }
-        axios.post('http://localhost:4000/upvoteAnswer',data)
+        axios.post('http://'+rooturl+':4000/upvoteAnswer',data)
         .then(res=>
             {
                 console.log("Success"+res)
@@ -59,7 +60,7 @@ class News extends Component {
             "answerid":answerid,
             "questionid":questionid
             }
-        axios.post('http://localhost:4000/downvoteAnswer',data)
+        axios.post('http://'+rooturl+':4000/downvoteAnswer',data)
         .then(res=>
             {
                 console.log("Success"+res)

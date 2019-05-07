@@ -12,7 +12,7 @@ class Search extends Component {
 
     componentDidMount(){
         console.log(this.state.questionid)
-        axios.get('http://localhost:4000/getAllQuestions').
+        axios.get('http://'+rooturl+':4000/getAllQuestions').
         then(questions=>{
            console.log("Search"+JSON.stringify(questions))
             var results=[];
@@ -33,7 +33,7 @@ class Search extends Component {
 
     handleSearch=(e)=>{
         console.log("searching.."+this.state.questionid)
-        window.open('http://localhost:3000/answers', "_self")
+        window.open('http://'+rooturl+':3000/answers', "_self")
     }
     
     render() { 

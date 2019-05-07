@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./Inbox.css";
 import Header from '../Header/Header';
+import {rooturl} from '../../config/settings';
+import { ROOT_URL } from '../../config/URLsettings';
 
 var Element = Scroll.Element;
 
@@ -54,7 +56,7 @@ export default class Inbox extends Component {
             msg: this.state.msg,
             time: time
         }
-        axios.post("http://localhost:4000/conversations", data)
+        axios.post("http://"+rooturl+":4000/conversations", data)
         .then((response) => {
             if(response.data.message==="error") alert("Something went wrong.")
             else if(response.data.message==="success"){
@@ -71,7 +73,7 @@ export default class Inbox extends Component {
 
     componentDidMount(){
         console.log(this.state.from + "from")
-        axios.get(`http://localhost:4000/conversations/${this.state.from}`)
+        axios.get(`${ROOT_URL}/conversations/${this.state.from}`)
         .then((result) => {
             console.log(result.data);
             // console.log(result.data.data)

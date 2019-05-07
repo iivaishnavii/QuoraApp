@@ -4,7 +4,7 @@ import quora from '../../images/QuoraLogo.png';
 import { Link } from 'react-router-dom';
 import Notifications from '../Notifications/notification';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
+import { ROOT_URL } from '../../config/URLsettings';
 
 
 import {Modal,Button} from 'react-bootstrap'
@@ -79,7 +79,7 @@ export default class Header extends Component {
         }
         console.log(data)
       
-      axios.post('http://localhost:4000/createQuestion/',data)
+      axios.post(  ROOT_URL + '/createQuestion/',data)
       .then(response=>{
       this.setState({ show: false });
       window.location.reload();
@@ -144,7 +144,7 @@ export default class Header extends Component {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" style={{"fontSize":"small"}} href="http://localhost:3000/newsfeed">  <i class="fas fa-home fa-2x"></i> Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" style={{"fontSize":"small"}} href= ":3000/newsfeed">  <i class="fas fa-home fa-2x"></i> Home <span class="sr-only">(current)</span></a>
                </li>
                 <li class="nav-item">
                  <a class="nav-link" style={{"fontSize":"small"}} href="#">  <i class="fas fa-edit fa-2x"></i> Answer</a>

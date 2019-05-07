@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from '../Header/Header'
 import '../Answers/answers.css'
 import { Redirect } from 'react-router'
+import {rooturl} from '../config/settings';
 
 class answer extends Component {
     constructor(props)
@@ -25,7 +26,7 @@ class answer extends Component {
     {
         console.log("Inside component did mount"+this.state.questionId)
         console.log("Question ID"+this.state.questionId)
-        var url = `http://localhost:4000/getAnswers/`+this.state.questionId
+        var url = `${ROOT_URL}/getAnswers/`+this.state.questionId
         console.log(url)  
         axios.get(url).
         then(response => {
@@ -60,7 +61,7 @@ class answer extends Component {
             "answerid":answerid,
             "questionid":this.state.questionId
             }
-        axios.post('http://localhost:4000/upvoteAnswer',data)
+        axios.post('http://' + rooturl + ':4000/upvoteAnswer',data)
         .then(res=>
             {
                 console.log("Success"+res)
@@ -112,7 +113,7 @@ class answer extends Component {
                 "question":this.state.question,
                 
             }
-            axios.post('http://localhost:4000/writeAnswer/',data)
+            axios.post('http://' + rooturl + ':4000/writeAnswer/',data)
             .then(response=>{
                 console.log("Wrote an Answer Successfully")
                 this.setState({redirectToMyAnswersPage:true})
@@ -131,7 +132,7 @@ class answer extends Component {
                 "question":this.state.question,
                 
             }
-            axios.post('http://localhost:4000/writeAnswer/',data)
+            axios.post('http://' + rooturl + ':4000/writeAnswer/',data)
             .then(response=>{
                 console.log("Wrote an Answer Successfully")
                 this.setState({redirectToMyAnswersPage:true})

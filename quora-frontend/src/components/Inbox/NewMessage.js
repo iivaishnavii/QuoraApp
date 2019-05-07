@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Scroll from 'react-scroll';
 import { Link } from 'react-router-dom';
-
+import { ROOT_URL } from '../../config/URLsettings';
 import axios from 'axios';
 import "./Inbox.css";
 import Header from '../Header/Header'
@@ -56,7 +56,7 @@ export default class NewMessage extends Component {
             msg: this.state.msg,
             time: time
         }
-        axios.post("http://localhost:4000/conversations", data)
+        axios.post(`${ROOT_URL}/conversations`, data)
         .then((response) => {
             if(response.data.message==="error") alert("Something went wrong.")
             else if(response.data.message==="success"){
@@ -68,7 +68,7 @@ export default class NewMessage extends Component {
     }
 
     componentDidMount(){
-        axios.get("http://localhost:4000/conversations")
+        axios.get(`${ROOT_URL}/conversations`)
         .then((result) => {
            
             this.setState({ threads: result.data.data})

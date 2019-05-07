@@ -13,7 +13,7 @@ class Bookmarkpage extends Component {
        Email: localStorage.getItem("email")
     }
     componentDidMount(){
-        // var url = `http://localhost:4000/viewCourses/`+localStorage.getItem('userid')
+       
         //var token = localStorage.getItem("token")
         const data = {
         Email : this.state.Email
