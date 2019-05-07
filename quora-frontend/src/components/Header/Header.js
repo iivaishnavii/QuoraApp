@@ -27,9 +27,7 @@ export default class Header extends Component {
     constructor(props){
         super(props);
 
-      this.handleShow = this.handleShow.bind(this);
-      this.handleClose = this.handleClose.bind(this);
-      this.toggle = this.toggle.bind(this);
+      
   
       this.state = {
         show: false,
@@ -39,6 +37,11 @@ export default class Header extends Component {
         dropdownOpen : false
        
       };
+
+      this.handleShow = this.handleShow.bind(this);
+      this.handleClose = this.handleClose.bind(this);
+      this.toggle = this.toggle.bind(this);
+      this.signOut = this.signOut.bind(this);
     }
 
 
@@ -62,9 +65,24 @@ export default class Header extends Component {
       this.setState({ show: true });
     }
     
+    signOut =(e) => {
+      console.log("Logging out1");
+      localStorage.removeItem('name');
+      localStorage.removeItem('email');
+      localStorage.removeItem('token');
+      localStorage.removeItem('credential');
+    
+     window.location.href = "http://localhost:3000/"
+     
+      
+
+  }
+
     handleTopic=(e)=>{
       this.setState({topic:e.target.value})
     }
+
+
     addQuestion=()=>
     {
       console.log("Inside add question with topics"+this.state.topics)
@@ -159,7 +177,7 @@ export default class Header extends Component {
                  <Search></Search>
                 {/* </form> */}
                 <div >
-                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                <Dropdown  style = {{width : 100, marginTop :10}} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle caret>
           Profile
         </DropdownToggle>
@@ -226,6 +244,9 @@ Logout</DropdownItem>
                 </Modal>
 
               </ul>
+              <div>
+                <Button onClick= {this.signOut}> Logout</Button>
+              </div>
               </div>
               </nav>
               </div>

@@ -157,6 +157,22 @@ export default class ProfileNav extends Component {
       }
 
 
+      followUser =(e) => {
+        console.log("following user");
+        var followEmail = e.target.value;
+        var email = localStorage.getItem('email');
+        var data = {
+          followEmail : e.target.value,
+         email : localStorage.getItem('email')
+        }
+
+        axios.post(`${ROOT_URL}/followUser`, data)
+    .then((result) => {
+     
+      this.componentDidMount();
+  });
+
+      }
     
 
     render() {
@@ -209,7 +225,8 @@ export default class ProfileNav extends Component {
                 
                  </div> 
                  <div className = 'col-sm-8' >
-                  <h3 style = {{marginTop : 30}}> <b>{this.state.Name}  </b> {(this.state.Email === localStorage.getItem('email')) ? <button onClick = {this.editProfile}> <i class="fas fa-pen"></i>  </button>  : ''}   </h3> 
+                  <h3 style = {{marginTop : 30}}> <b>{this.state.Name}  </b> {(this.state.Email === localStorage.getItem('email')) ? <button onClick = {this.editProfile}> <i class="fas fa-pen"></i>  </button>  : 
+                 <button value = {this.state.Email} onClick = {this.followUser}> Follow  </button> }   </h3> 
                   
                    <h4 > {this.state.ProfileCredential}   </h4> 
                    <h5 > <b> <i> {this.state.Description} </i> </b>  </h5> 
@@ -230,14 +247,14 @@ export default class ProfileNav extends Component {
                         <hr class ="hr"></hr>
                         <div class="btn-group-vertical">
                         <button id='all' class="button-content " default = "active"><span class ="size-sm1" >Profile </span></button>
-                        <button id='questions' class="button-content"    > <Link to={`/profile/answers/${localStorage.getItem('email')}`}> <span class ="size-sm1" > Answers  {this.state.QuestionsAnswered.length}</span>  </Link> </button>
-                        <button id='followed' class="button-content"  >  <Link to={`/profile/questions/${localStorage.getItem('email')}`}>  <span class ="size-sm1" >Questions {this.state.Questions.length} </span> </Link></button>
+                        <button id='questions' class="button-content"    > <Link to={`/profile/answers/${this.state.Email}`}> <span class ="size-sm1" > Answers  {this.state.QuestionsAnswered.length}</span>  </Link> </button>
+                        <button id='followed' class="button-content"  >  <Link to={`/profile/questions/${this.state.Email}`}>  <span class ="size-sm1" >Questions {this.state.Questions.length} </span> </Link></button>
                         <button  id='posts' class="button-content"   > <span class ="size-sm1" >Shares 0</span></button>
                         <button id='all' class="button-content "  ><span class ="size-sm1" >Spaces 0 </span></button>
                         <button id='all' class="button-content "   ><span class ="size-sm1" >Posts 0</span></button>
                         <button id='all' class="button-content " ><span class ="size-sm1" >Blogs 0 </span></button>
-                        <button id='all' class="button-content "   ><Link to={`/profile/Followers/${localStorage.getItem('email')}`}>  <span class ="size-sm1" >Followers {this.state.Followers.length}</span> </Link></button>
-                        <button id='all' class="button-content " > <Link to={`/profile/Following/${localStorage.getItem('email')}`}>  <span class ="size-sm1" >Following {this.state.Following.length}</span> </Link></button>
+                        <button id='all' class="button-content "   ><Link to={`/profile/Followers/${this.state.Email}`}>  <span class ="size-sm1" >Followers {this.state.Followers.length}</span> </Link></button>
+                        <button id='all' class="button-content " > <Link to={`/profile/Following/${this.state.Email}`}>  <span class ="size-sm1" >Following {this.state.Following.length}</span> </Link></button>
                         <button id='all' class="button-content "  ><span class ="size-sm1" >Edits </span></button>
                         <button id='all' class="button-content "   ><span class ="size-sm1" >Activity </span></button>
                         </div>
