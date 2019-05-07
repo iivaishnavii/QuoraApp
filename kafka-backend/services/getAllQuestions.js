@@ -6,10 +6,12 @@ function handle_request(message,callback){
     Model.QuestionsModel.find({  },(err,question)=>{
         if(question)
         {
+            console.log(question)
             callback(null,question)
         }
         else
         {
+            console.log("empty")
             callback(err,null)
         }
     

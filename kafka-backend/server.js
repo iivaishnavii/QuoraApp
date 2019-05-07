@@ -27,6 +27,9 @@ var content = require('./services/content.js')
 var getActivity = require('./services/getActivity')
 var topUpvotes = require('./services/topUpvotes.js')
 var topDownVotes = require('./services/topDownvotes')
+var topBookmarks = require('./services/topBookmarks')
+var topViews = require('./services/topViews')
+var getProfileviews = require('./services/getProfileviews')
 
 var deleteUser = require('./services/deleteUser.js')
 var getProfile = require('./services/getProfile.js')
@@ -74,7 +77,7 @@ function handleTopicRequest(topic_name,fname){
 //first argument is topic namex
 //second argument is a function that will handle this topic request
 
- handleTopicRequest("login",login)
+  handleTopicRequest("login",login)
 handleTopicRequest("upvoteAnswer",upvoteAnswer)
 handleTopicRequest("update-profile",profile)
 handleTopicRequest("delete-user",deleteUser)
@@ -83,17 +86,22 @@ handleTopicRequest("get-profile",getProfile)
 handleTopicRequest("get-answers",getAnswers) 
 handleTopicRequest("create-question",createQuestion) 
   handleTopicRequest("signup",signup)
-handleTopicRequest("get-profile",getProfile)
+ handleTopicRequest("get-profile",getProfile)
 handleTopicRequest("update-profile",profile)
- handleTopicRequest("get-questions",getAllQuestions)
+  handleTopicRequest("get-questions",getAllQuestions)
   handleTopicRequest("create-topic", createTopic);
-handleTopicRequest("get-questions",getAllQuestions)
+ handleTopicRequest("get-questions",getAllQuestions)
  handleTopicRequest("write-answer",writeAnswer)
  handleTopicRequest("notifications",notifications)
  handleTopicRequest("getTopics",getTopics)
  handleTopicRequest("getAllTopics",getAllTopics)
  handleTopicRequest("topUpvotes",topUpvotes)
  handleTopicRequest("topDownvotes",topDownVotes)
+ handleTopicRequest("topBookmarks",topBookmarks)
+ handleTopicRequest("topViews",topViews)
+ handleTopicRequest("getProfileviews",getProfileviews)
+
+
 
  handleTopicRequest("follow-question",followQuestion)
  handleTopicRequest("content",content);

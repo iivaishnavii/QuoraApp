@@ -12,6 +12,8 @@ function handle_request(message, callback){
             isAnonymous:message.body.isAnonymous,
             date:message.body.date,
             question:message.body.question,
+            views : 0,
+            bookmarks : 0
            // images : imageOfUser
         })
         user.QuestionsAnswered =  user.QuestionsAnswered || []
@@ -37,6 +39,7 @@ function handle_request(message, callback){
 
             Model.QuestionsModel.findOne({"Question":message.body.question},(err,question)=>{
                 console.log("I am Ques"+question)
+                user.QuestionsAnswered =  user.QuestionsAnswered || []
                 question.Answers.push(answer)
                 console.log("followers");
                 console.log(question.Followers);
@@ -60,8 +63,7 @@ function handle_request(message, callback){
                         })
                 }
                 
-                question.save().
-                then(res=>{
+                question.save().then(res=>{
                     callback(null,res)
                 })
                 .catch(err=>callback(err,null))
