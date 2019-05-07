@@ -38,7 +38,19 @@ class Search extends Component {
             })
         })
         .catch(err=>console.log(err))
-        console.log("Search Results"+this.state.searchResults)
+
+        axios.get('http://localhost:4000/getAllTopics').
+        then(topics=>{
+            console.log("Set of topics"+JSON.stringify(topics));
+            topics.data.forEach(ele=>{
+                var obj={label:ele.topicName,value:{'topic':ele.topicName,'type':'topic'}}
+               // var obj={label:ele.Name,value:ele.Email}
+                results.push(obj)
+            })
+        })
+        .catch(err=>console.log(err))
+        console.log("Search Results"+results)
+        
         this.setState({searchResults:results})
 
     }
@@ -75,6 +87,13 @@ class Search extends Component {
                                     console.log("State"+this.state.questionid);
                                      });
                             }
+                            else
+                            {
+                                this.setState({type:opt.value.type})
+                                this.setState({topic:opt.value.id},function () {
+                                    console.log("State"+this.state.questionid);
+                                     });
+                            }
                             
                          
                         }
@@ -90,8 +109,9 @@ class Search extends Component {
             {this.state.type=='person'?
             <a href={`http://localhost:3000/profile/answers/${this.state.email}`}>
             <button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></a> 
-            :
-            <Link to={{pathname : "/answers",state :{'questionid':this.state.questionid}} }  > 
+            :this.state.type=='topic'?
+            <a href='http://localhost:3000/newsfeed/topic/running'><button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></a> 
+            :<Link to={{pathname : "/answers",state :{'questionid':this.state.questionid}} }  > 
             <button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></Link>  
             }        
           
