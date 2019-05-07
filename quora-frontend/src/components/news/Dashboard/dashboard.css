@@ -1,0 +1,35 @@
+ .btn.btn-default {
+ 
+    border-color: #f0ad4e;
+    color: #ffffff;
+    font-size: 14px;
+    width: 250px;
+    height: 25px;
+    line-height: 40px;
+  
+    background-color: purple;
+  
+    color: white;
+  
+    
+   
+  
+    font-size: 16px;
+  }
+
+  .graphbtn{
+    background-color : #b92b27;
+    color : white;
+    width : 200px;
+  }
+
+
+
+.graph1 {
+    
+    padding-top: 100px;
+    padding-bottom: 200px;
+    padding-right: 150px;
+    padding-left: 150px;
+  
+  }

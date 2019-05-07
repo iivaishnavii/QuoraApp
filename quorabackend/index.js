@@ -45,6 +45,8 @@ const followTopic = require('./routes/followTopic');
 const followUser = require('./routes/followUser');
 const getFollowers = require('./routes/getFollowers');
 const content = require('./routes/content');
+var topDownvotes = require('./routes/topDownvotes')
+const topUpvotes = require('./routes/topUpvotes.js');
 const searchTopicContent = require('./routes/searchTopicContent')
 const deleteUser = require('./routes/deleteUser')
 const getProfile = require('./routes/getProfile')
@@ -59,8 +61,10 @@ var signUp = require('./routes/signUp.js')
 var createTopic = require('./routes/createTopic');
 var getActivity = require('./routes/getActivity.js')
 var searchTopic = require('./routes/searchTopic');
+var getAllTopics = require('./routes/getAllTopics')
 var redisTest = require('./routes/redisTest');
 var upvoteAnswers= require('./routes/upvoteAnswers')
+
 
 app.use('/login',login)
 app.use('/signUp',signUp)
@@ -85,7 +89,8 @@ app.use('/searchTopicContent',searchTopicContent)
 app.use('/delete',deleteUser)
 app.use('/getProfile',getProfile)
 app.use('/getAllQuestions',getAllQuestions)
-
+app.use('/getTopUpvotes', topUpvotes)
+app.use('/getTopDownvotes',topDownvotes)
 app.use('/allQuestions' ,redisTest)
 app.use('/notifications',notifications)
 app.use('/createQuestion',createQuestion)
@@ -95,6 +100,7 @@ app.use('/writeAnswer',writeAnswer)
 app.use('/followQuestion',followQuestion)
 app.use('/searchQuestion',searchQuestion)
 app.use('/searchTopic', searchTopic)
+app.use('/getAllTopics', getAllTopics)
 
 app.use('/getUserFollowingData',getUserFollowingData)
 app.use('/createTopic', createTopic)

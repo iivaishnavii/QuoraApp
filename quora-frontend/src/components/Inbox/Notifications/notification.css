@@ -1,0 +1,79 @@
+.dialog {
+    margin-left: 500px;
+    margin-top : 20px;
+    width : 200px;
+    background-color: grey
+  }
+  
+  .menubar {
+    color : grey
+  }
+  
+  .paper {
+    margin-left : 100px;
+    color :  red;;
+    background:  white;
+    border-radius: 3px;
+    border-style: ridge;
+  }
+
+  .header {
+    text-transform: capitalize
+  }
+
+
+    
+  .size-sm {
+    font-size : 10px;
+    color : grey;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+  
+  }
+  
+  .link{
+   color : steelblue
+  
+  }
+
+
+
+  .button-content {
+    background-color:#949494; /* Green */
+   
+    border-style : none;
+   
+    text-align: left;
+  
+    width : 140px;
+    height:  25px;
+    font-size: 16px;
+   
+    
+    
+  }
+
+
+  .icons {
+    margin: 0 auto;
+    position: left;
+    width: 30px;
+    height : 30px;
+    
+  }
+  .icons:hover {
+  color: grey;
+    
+  }
+
+  .color {
+    font-size : 13px;
+    color : rgb(63, 62, 62);
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 450;
+  }
+
+  /* .head {
+    background : rgb(226, 226, 226);
+    height : 40px;
+  } */

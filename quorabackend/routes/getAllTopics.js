@@ -5,26 +5,26 @@ var passport = require('passport')
 var requireAuth = passport.authenticate('jwt',{session : false})
 
 
-router.post('/',function(req,res){
-    console.log("in update pro")
-    // if(req.session.user)
-    // {
-        console.log("In create topic request"+req.body)
-        kafka.make_request("create-topic",req,function(err,result){
+router.get('/',function(req,res){
+    console.log("in get all topics")
+    
+       console.log(req.body);
+        kafka.make_request("getAllTopics",req,function(err,result){
             if(err)
             {
-                console.log("Unable to create topic",err);
+                console.log("Unable to get all topics",err);
                 res.writeHead(400,{
                     'Content-type' : 'text/plain'
                 })
-                res.end('Unable to create topic')
+                res.end('Error in fetching topics')
             }
             else{
-                console.log("topics  added successfully body")
+                console.log("fetched all topics"+result)
                 res.writeHead(200,{
                     'Content-Type' : 'text/plain'
                 })
-                res.end('Adding a topic successfully')
+             
+                res.end(JSON.stringify(result));
             }
         })
    // }
