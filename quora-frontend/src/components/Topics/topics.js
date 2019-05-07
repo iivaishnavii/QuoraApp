@@ -65,7 +65,7 @@ topic = (e) => {
                       
 
                         {topics}
-                        <button><a href="http://localhost:3000/newsfeed/topic/MachineLearning">Bookmarked Answers</a></button>
+                        <button><a href="http://localhost:3000/bookmarks">Bookmarked Answers</a></button>
  
   
                        

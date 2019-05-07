@@ -82,8 +82,9 @@ var redisTest = require('./routes/redisTest');
 var upvoteAnswers= require('./routes/upvoteAnswers')
 var downvoteAnswers = require('./routes/downVoteAnswer')
 var users=require('./routes/users')
-
-
+var userBookmarks = require('./routes/userBookmarks')
+var bookmarkanswers = require('./routes/bookmarkanswers')
+var addcomments=require('./routes/addcomments')
 
 app.use('/login',login)
 app.use('/signUp',signUp)
@@ -129,8 +130,10 @@ app.use('/getAllTopics', getAllTopics)
 app.use('/getUsers',users)
 app.use('/getUserFollowingData',getUserFollowingData)
 app.use('/createTopic', createTopic)
+app.use('/userBookmarks',userBookmarks )
 
-
+app.use('/bookmarkanswers',bookmarkanswers)
+app.use('/addcomments',addcomments)
 
 const fs = require('fs');
 const storagepic = multer.diskStorage({
