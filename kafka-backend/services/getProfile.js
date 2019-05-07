@@ -8,6 +8,14 @@ function handle_request(message,callback){
     },(err,user)=>{
         if(user)
         {
+            var views = {
+             dateViewed : new Date()
+            }
+            user.views = user.views || []
+            user.views.push(views);
+            user.save().then((doc) => {
+                console.log("user saved with views")
+            })
             callback(null,user)
         }
         else

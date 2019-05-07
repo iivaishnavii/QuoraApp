@@ -60,7 +60,8 @@ mongoose.connect("mongodb+srv://quora:quora@cluster0-6ddbb.mongodb.net/QuoraApp?
     Email: { type: String, trim: true, default: 0 },
     Password: { type: String, trim: true, default: "" },
     ProfilePicture : {type:Buffer},
-    notifications : {type : Array}
+    notifications : {type : Array},
+    views : {type : Array}
 })
 
 

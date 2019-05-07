@@ -14,20 +14,34 @@ function handle_request(message,callback){
                 question.Answers[q].views = question.Answers[q].views+1;
                 let _id = question.Answers[q]._id;
 
-                Model.AnswerModel.find({_id : _id},(err,answer) => {
+                Model.AnswerModel.findOne({_id : _id},(err,ans) => {
                    if(err) {
                        console.log("error in fectching answer");
                    }
-                    if(answer) {
-                        answer.views = answer.views+1;
-                        answer.save();
+                    if(ans) {
+
+                            console.log(ans);
+                        ans.views = ans.views+1;
+                        ans.save().then((doc)=>{
+                            console.log("Answer updated successfully",doc)
+                           
+                        },(err)=>{
+                            console.log("Unable to save answer",err)
+                          
+                        })
                     }
                    
                 } )
                 
             }
 
-            question.save();
+            question.save().then((doc)=>{
+                console.log("question updated successfully",doc)
+                
+            },(err)=>{
+                console.log("Unable to save question",err)
+              
+            })
             callback(null,question)
 
 

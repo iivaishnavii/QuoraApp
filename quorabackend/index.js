@@ -17,7 +17,7 @@ app.use(session({
     duration: 60 * 60 * 100,
     activeDuration: 5 * 60 * 100
   }));
-app.use(cors({origin:'http://localhost:3000',credentials:true}))
+app.use(cors({origin:'*',credentials:true}))
 
 require('./config/passport')(passport);
 
@@ -45,8 +45,11 @@ const followTopic = require('./routes/followTopic');
 const followUser = require('./routes/followUser');
 const getFollowers = require('./routes/getFollowers');
 const content = require('./routes/content');
-var topDownvotes = require('./routes/topDownvotes')
+const topDownvotes = require('./routes/topDownvotes')
 const topUpvotes = require('./routes/topUpvotes.js');
+const topViews = require('./routes/topViews')
+const topBookmarks = require('./routes/topBookmarks')
+const getProfileviews = require('./routes/getProfileviews')
 const searchTopicContent = require('./routes/searchTopicContent')
 const deleteUser = require('./routes/deleteUser')
 const getProfile = require('./routes/getProfile')
@@ -91,6 +94,10 @@ app.use('/getProfile',getProfile)
 app.use('/getAllQuestions',getAllQuestions)
 app.use('/getTopUpvotes', topUpvotes)
 app.use('/getTopDownvotes',topDownvotes)
+app.use('/getTopBookmarks',topBookmarks)
+app.use('/getTopViews',topViews)
+app.use('/getProfileviews',getProfileviews)
+
 app.use('/allQuestions' ,redisTest)
 app.use('/notifications',notifications)
 app.use('/createQuestion',createQuestion)
