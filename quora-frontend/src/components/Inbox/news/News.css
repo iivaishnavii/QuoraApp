@@ -1,0 +1,38 @@
+
+
+.feed-user-pic .pic {
+  height: 40px;
+}
+
+.question{
+  font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
+  font-weight: bold;
+  line-height: 1.3;
+  color: #333;
+  font-size: 18px;
+}
+
+.answer{
+  display: block;
+  margin-bottom: 1em;
+  font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
+  font-size: 16px!important;
+  line-height: 1.75;
+}
+
+.transButton{
+  background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.fa-arrow-circle-up{
+  color:#329bff;
+}
+
+.QuoraLabels{
+  color : #666666
+}

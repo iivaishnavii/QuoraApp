@@ -7,25 +7,20 @@ function handle_request(message,callback)
      
     console.log("Inside handle requests of profile views:")
     console.log(message.Email);
-     Model.UserModel.aggregate([
-        
-        {$match: { Email:message.Email}},
-        {$group: {_id :{
-            day: { $dayOfMonth: "$views.dateViewed" }
-           
-        
-        }
-        }
-        
-    }
-    ], function(err,result){
+     Model.UserModel.findOne({Email : message.Email}, function(err,result){
 
         if(err) 
         callback(err,null);
 
         if(result) {
          console.log(result)
-         callback(null,result);
+         if(result.views) {
+            callback(null,result.views);
+         }
+         else {
+            callback(null,[]);
+         }
+      
         }
         else {
             console.log(result)
