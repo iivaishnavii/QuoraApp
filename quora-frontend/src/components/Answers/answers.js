@@ -17,10 +17,22 @@ class answer extends Component {
             open: false,
             answer : "",
             redirectToMyAnswersPage : false,
-            displayOnlyQuestions:false
+            displayOnlyQuestions:false,
+            selectedFile : null,
+            imageId : 0,
+            img0: '',
+            img1: '',
+            img2: '',
+            img3 : ''
         }
         console.log("Props"+JSON.stringify(props.location.state.questionid))
     }
+    arrayBufferToBase64(buffer) {
+        var binary = '';
+        var bytes = [].slice.call(new Uint8Array(buffer));
+        bytes.forEach((b) => binary += String.fromCharCode(b));
+        return window.btoa(binary);
+    };
     componentWillMount()
     {
         console.log("Inside component did mount"+this.state.questionId)
@@ -101,17 +113,36 @@ class answer extends Component {
         });
       };
 
+    fileSelectedHandler=(e)=>{
+        this.setState({selectedFile :e.target.files[0] })
+    }
+
+    fileUpload = (e)=>{
+        const data = new FormData() 
+        data.append('selectedFile', this.state.selectedFile)
+        console.log('Selected File'+this.state.selectedFile)
+        var num = Math.floor((Math.random() * 1000) + 1);        
+        axios.post('http://localhost:4000/addpicforanswer/'+num,data)
+        .then(res=>{
+            console.log("Upload successfully")
+            this.setState({imageId:num})
+            console.log("ImageID"+this.state.imageId)
+        })
+
+    }
+
     handleSubmit = (e)=>{
         if(this.state.isAnonymous===1)
         {
             var data={
                 "answer" : this.state.answer,
-                "owner" : "Anonymous",
+                "owner" : "Shivani@gmail.com",
                 "isAnonymous":1,
                 "date":"05-05-2019",
                 "question":this.state.question,
                 
             }
+            console.log("In anonymous block")
             axios.post('http://localhost:4000/writeAnswer/',data)
             .then(response=>{
                 console.log("Wrote an Answer Successfully")
@@ -163,6 +194,22 @@ class answer extends Component {
           this.setState({showAnswerDialog:true})
 
       }
+      renderAnswer=(data,index)=>{
+         if(data[0].img.data[0]!=0)
+         {
+            console.log("File"+JSON.stringify(data[0].img.data.data))
+            var base64Flag = 'data:image/jpeg;base64,';
+
+         }
+          
+        //  var imageStr = this.arrayBufferToBase64(data[0].img.data.data);
+        //  console.log("Image String"+imageStr)
+        //  console.log("index"+index)
+        //  var left = 'img'+index;
+         //console.log(left+imageStr)
+         //this.setState({left:base64Flag+imageStr})
+//return(<img src={this.state.img}/>)
+      }
     render() { 
         let redirectvar = null
         if(this.state.redirectToMyAnswersPage === true)
@@ -174,8 +221,8 @@ class answer extends Component {
             displayanswedraft=
             <div>
                 <div>
-                    <input type="file" onChange={this.uploadImage}></input>
-                    <button className="mt-2 btn-primary" >Add Image</button>
+                    <input type="file" onChange={this.fileSelectedHandler}></input>
+                    <button className="mt-2 btn-primary" onClick={this.fileUpload}>Add Image</button>
                 </div>
                 <div class="mt-2">
                     <textarea class="form-control" rows="5" id="comment" onChange={this.setAnswer}></textarea>
@@ -187,14 +234,19 @@ class answer extends Component {
         let displayAnswers =  null
         if(this.state.displayOnlyQuestions===false)
         {
-            displayAnswers=this.state.results.map((answer)=>{
+            displayAnswers=this.state.results.map((answer,index)=>{
                 return(
                     <div>
                         <div class="feed-user-pic row">
                             <img class="pic ml-3" src="https://cdn2.stylecraze.com/wp-content/uploads/2013/07/10-Pictures-Of-Katy-Perry-Without-Makeup.jpg"/>
                             <p class="ml-2">{answer.owner}</p>
                         </div>
-                        <p>{answer.answer}</p>
+                        <p style={{"backgroundColor":"bg-light"}}>{answer.answer}</p>
+                        {/*this.renderAnswer(answer.images,index)*/}
+                        <div>
+                        {answer.imageURL!=""?<img src={answer.imageURL} style={{"width":100,"height":100}}/>:null}
+                            
+                        </div>
                         <button style={{"font-size":"15px"}} class="transButton" onClick={e=>{this.handleUpvote(e,answer._id)}} data-id={answer._id}
 ><label class="QuoraLabels"><b>Upvote</b></label><i class="fa fa-arrow-circle-up ml-1"></i></button>
                         <label class="ml-1">{answer.upVotes}</label>

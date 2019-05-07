@@ -42,6 +42,7 @@ var searchQuestion = require('./services/searchQuestion')
 var searchTopic = require('./services/searchTopic')
 var createTopic = require('./services/createTopic');
 var upvoteAnswer = require('./services/upvoteAnswers')
+var downvoteAnswer = require('./services/downvoteAnswer')
 
 
 function handleTopicRequest(topic_name,fname){
@@ -116,7 +117,7 @@ handleTopicRequest("user_answers",userAnswers);
 handleTopicRequest("user_questions",userQuestions)
 handleTopicRequest("user_bookmarks",userBookmarks)
 handleTopicRequest("update_answer",updateAnswer)
-
+handleTopicRequest("downvoteAnswer", downvoteAnswer)
 
 
 

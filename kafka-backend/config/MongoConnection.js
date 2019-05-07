@@ -14,11 +14,17 @@ mongoose.connect("mongodb+srv://quora:quora@cluster0-6ddbb.mongodb.net/QuoraApp?
     console.error('Database connection error')
   })
 
-  
+  var ImgSchema = new Schema({
+    img: { data: Buffer, contentType: String}
+  }, {
+    timestamps: true
+  });
+
   var AnswerSchema = new Schema({
     answer: { type: String, trim: true},
     owner: { type: String, trim: true },
-    images: { type: Buffer, trim: true },
+    images: [ImgSchema],
+    imageURL : String,
     isAnonymous: { type: Boolean, trim: true },
     upVotes: { type: Number, trim: true, default: 0 },
     downVotes: { type: Number, trim: true, default: 0 },
@@ -117,6 +123,7 @@ var ConverstionModel = mongoose.model('Converstion',ConversationSchema)
 var TopicsModel = mongoose.model('Topics',TopicsSchema)
 var ActivityModel = mongoose.model('activity', ActivitySchema)
 var MessageModel = mongoose.model('Messages', messageSchema)
+var Img = mongoose.model('Img',ImgSchema)
 
 module.exports={
     UserModel,
@@ -125,5 +132,6 @@ module.exports={
     QuestionsModel,
     TopicsModel,
     ActivityModel,
-    MessageModel
+    MessageModel,
+    Img
 }
