@@ -23,7 +23,9 @@ class answer extends Component {
             img0: '',
             img1: '',
             img2: '',
-            img3 : ''
+            img3 : '',
+            comment :[],
+            Email: localStorage.getItem("email")
         }
         console.log("Props"+JSON.stringify(props.location.state.questionid))
     }
@@ -201,6 +203,70 @@ class answer extends Component {
             var base64Flag = 'data:image/jpeg;base64,';
 
          }
+         addcomment=(e)=>{
+            this.setState({
+                comment : e.target.value
+            
+            })
+            console.log(this.state.comment)
+            }
+          handleaddcomment= (event) =>{
+            console.log("buttonclicked")
+            console.log(event)
+        
+           
+            var url='http://localhost:4000/addcomments'
+            var data = {
+             "answerid" : event, 
+             "email": this.state.Email,
+             "comment":this.state.comment
+            }
+            console.log(url)
+            console.log("data:",data)
+            
+             axios.post(url,data)
+             .then(response => {
+                 console.log("got response:",response)
+                 var newResult = this.state.results;
+    
+                 for(var i=0;i<newResult.length;++i){
+                     if(newResult[i]._id==event){
+                         console.log("Here in the id")
+                         newResult[i]["comment"].push({username:"Shivani",comment:this.state.comment})
+                     }
+                 }
+                 console.log("After the find ")
+                 console.log(newResult)
+                 this.setState({
+                     results : newResult
+                 })
+    
+                //  window.location.href=window.location.href
+             })
+             .catch(response => {
+                // console.log(response.toString())
+             })
+        
+        
+        }
+        bookmark=(event)=>{
+            console.log("Bookmarkclicked")
+            console.log(event)
+        
+            var data = {
+                "answerid" : event, 
+                "Email": this.state.Email
+            }
+            var url='http://localhost:4000/bookmarkanswers'
+            axios.post(url,data)
+             .then(response => {
+                 console.log("got response:",response)
+             })
+             .catch(response => {
+                // console.log(response.toString())
+             })
+    
+        }
           
         //  var imageStr = this.arrayBufferToBase64(data[0].img.data.data);
         //  console.log("Image String"+imageStr)
@@ -256,8 +322,12 @@ class answer extends Component {
                         <button class="ml-3 transButton" style={{"font-size":"15px","float":"right"}}><label class="QuoraLabels"><b>Downvote</b></label> <i class="fa fa-arrow-circle-down"></i></button>
                         <button class="transButton" style={{"float":"right"}}><i class="fas fa-ellipsis-h ml-3" ></i></button>
                         <div class='card-header'>
-                            <input type="text" style={{"width":"800px"}} placeholder="Add comment"/>
-    
+                        <input type="text" style={{"width":"800px"}} placeholder="Add comment" onChange={this.addcomment}/>
+                        <button class="btn btn-info" value={answer._id} onClick={()=>this.handleaddcomment(answer._id)} >Add Comment</button>
+                    <h6><strong>Previous Comments</strong></h6>
+                    {answer.comments.map(item => {
+                  return      <p><strong>{item["username"]}</strong> : {item["comment"]}</p>
+                })}
                         </div>
                         
                         <hr></hr>
