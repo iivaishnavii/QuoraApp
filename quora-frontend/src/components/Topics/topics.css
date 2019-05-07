@@ -1,0 +1,80 @@
+
+
+  .button-content {
+
+    border-style : none;
+   
+    text-align: left;
+  
+    width : 140px;
+    height:  25px;
+    font-size: 13px;
+    color : grey;
+    font-weight: 450;
+
+    
+    
+    
+  }
+
+  .hr { 
+  
+    margin-left: 0%;
+    width : 150px;
+    height : 0px;
+    size : 5;
+  } 
+  
+  .width1 {
+    width : 200px;
+    left : 10px;
+    top : 20px;
+    
+  }
+
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 660px;
+    
+    position: fixed;
+    height: 100%;
+  
+  }
+
+
+  .heading {
+    font-size : 15px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+  
+  }
+
+  .topics {
+      margin-left : 50px;
+      margin-top : 20px;
+      color : grey;
+      font-size : 15px;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-weight: 450;
+       width : "150px";
+  }
+
+  .link {
+      color : grey;
+
+  }
+
+
+
+  .icons {
+    margin: 0 auto;
+    position: left;
+    width: 30px;
+    height : 30px;
+    
+  }
+  .icons:hover {
+  color: grey;
+    
+  }

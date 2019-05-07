@@ -3,14 +3,15 @@ var mongooseTypes = require('mongoose').Types;
 function handle_request(message,callback){
     console.log("Inside Kafka create question",message);
     var Topic =  Model.TopicsModel({
-        topicName : "Machine Learning",
+        topicName : message.body.topic,
     followers : 1,
-    questions : null
+    questions : []
     })
     console.log("Topic  is :"+Topic)
     Topic.save()
     .then(res => {
         console.log("Success response"+res)
+        callback(err,res)
        /* Model.UserModel.findOne({"Email":message.body.QuestionOwner},(err,user)=>{
             console.log("user is"+user)
             if(user)

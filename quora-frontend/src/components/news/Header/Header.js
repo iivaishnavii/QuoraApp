@@ -173,10 +173,9 @@ export default class Header extends Component {
           <DropdownItem><Link to={`/Blogs}`}> Create Ad </Link> </DropdownItem>
           <DropdownItem> <Link to={`/Blogs}`}> Settings </Link> </DropdownItem>
           <DropdownItem divider />
-          <DropdownItem> <Link to={`/deleteAccount`}> Delete an Existing account </Link> </DropdownItem>
           <DropdownItem>Help ·
 About · 
-</DropdownItem>
+Logout</DropdownItem>
           
         </DropdownMenu>
       </Dropdown>

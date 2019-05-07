@@ -20,10 +20,13 @@ var userQuestions = require('./services/userQuestions.js')
 var userBookmarks = require('./services/userBookmarks.js')
 var updateAnswer = require('./services/updateAnswer.js')
 var notifications = require('./services/notifications')
+var getTopics = require('./services/getTopics')
+var getAllTopics = require('./services/getAllTopics')
 
 var content = require('./services/content.js')
 var getActivity = require('./services/getActivity')
-
+var topUpvotes = require('./services/topUpvotes.js')
+var topDownVotes = require('./services/topDownvotes')
 
 var deleteUser = require('./services/deleteUser.js')
 var getProfile = require('./services/getProfile.js')
@@ -79,16 +82,21 @@ handleTopicRequest("createConversation",CreateConversation)
 handleTopicRequest("get-profile",getProfile)
 handleTopicRequest("get-answers",getAnswers) 
 handleTopicRequest("create-question",createQuestion) 
-handleTopicRequest("signup",signup)
+  handleTopicRequest("signup",signup)
 handleTopicRequest("get-profile",getProfile)
- 
+handleTopicRequest("update-profile",profile)
+ handleTopicRequest("get-questions",getAllQuestions)
+  handleTopicRequest("create-topic", createTopic);
 handleTopicRequest("get-questions",getAllQuestions)
-handleTopicRequest("create-topic", createTopic);
-handleTopicRequest("get-questions",getAllQuestions)
-handleTopicRequest("write-answer",writeAnswer)
-handleTopicRequest("notifications",notifications)
-handleTopicRequest("follow-question",followQuestion)
-handleTopicRequest("content",content);
+ handleTopicRequest("write-answer",writeAnswer)
+ handleTopicRequest("notifications",notifications)
+ handleTopicRequest("getTopics",getTopics)
+ handleTopicRequest("getAllTopics",getAllTopics)
+ handleTopicRequest("topUpvotes",topUpvotes)
+ handleTopicRequest("topDownvotes",topDownVotes)
+
+ handleTopicRequest("follow-question",followQuestion)
+ handleTopicRequest("content",content);
 handleTopicRequest('get_activity',getActivity)
 handleTopicRequest("search-question",searchQuestion)
 handleTopicRequest("search-topic",searchTopic) 

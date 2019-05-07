@@ -25,6 +25,8 @@ mongoose.connect("mongodb+srv://quora:quora@cluster0-6ddbb.mongodb.net/QuoraApp?
     comments: { type: Array, trim: true, default: "" },
     date : { type: String, trim: true, default: "" },
     question : { type: String, trim: true, default: "" },
+    views : {type : Number, default: 0},
+    bookmarks : {type : Number, default: 0}
 })
 
   var QuestionsSchema = new Schema({
