@@ -1,5 +1,5 @@
 var crypto = require('crypto');
-var conn = require('./Connection');
+var conn = require('./connection');
 const JSON = require('circular-json');
 
 
