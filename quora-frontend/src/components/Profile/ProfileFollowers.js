@@ -251,7 +251,8 @@ height : 164}} >
             
              </div> 
              <div className = 'col-sm-8' >
-              <h3 style = {{marginTop : 30}}> <b>{this.state.Name}  </b> {(this.state.Email === localStorage.getItem('email')) ? <button onClick = {this.editProfile}> <i class="fas fa-pen"></i>  </button>  : <button onClick = {this.followUser}> Follow  </button> }   </h3> 
+              <h3 style = {{marginTop : 30}}> <b>{this.state.Name}  </b> {(this.state.Email === localStorage.getItem('email')) ? <button onClick = {this.editProfile}> <i class="fas fa-pen"></i>  </button>  : 
+              <button value = {this.state.Email} onClick = {this.followUser}> Follow  </button>  }   </h3> 
               
                <h4 > {this.state.ProfileCredential}   </h4> 
                <h5 > <b> <i> {this.state.Description} </i> </b>  </h5> 
