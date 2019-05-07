@@ -40,7 +40,8 @@ class Search extends Component {
         return ( 
             <div>
 <div className = "row">
-<div className = 'col-sm-8' > 
+
+<div className = 'col-sm-4' > 
                 <div className="container" style={{marginTop:"-3%",backgroundColor:"#F8F8F8", width : 340, height : 90}}>
                      <Select style={{marginTop:"0%"}} options={this.state.searchResults} onChange={opt=>
                         {console.log(opt.label,opt.value)
@@ -51,14 +52,17 @@ class Search extends Component {
                         }
                     }/>   
 
+
                 </div>
 
-                <div  className = 'col-sm-4' >
-
-                   <Link to={{pathname : "/answers",state :{'questionid':this.state.questionid}} }  > 
-                     <button class="btn btn-outline-success" style={{"fontSize":"small"}} type="submit" onClick={this.handleSearch}>Search </button>      </Link>  
-                </div>
+               
             </div>
+
+            <div  className = 'col-sm-4' >
+
+<Link to={{pathname : "/answers",state :{'questionid':this.state.questionid}} }  > 
+  <button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button>      </Link>  
+</div>
             </div>
             </div>
          );

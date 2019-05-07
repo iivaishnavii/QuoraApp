@@ -20,13 +20,13 @@ class UserQuestions extends Component {
          console.log(url)  
          var data = {
           
-            Email : this.state.Email
+            email : this.state.Email
         }
         axios.post(url, data, {headers : {"Authorization": `Bearer ${token}`}}).
          then(response => {
                  console.log("in then")
                  console.log(response.data)
-                 this.setState({news : this.state.news.concat(response.data)})
+                 this.setState({news : this.state.news.concat(response.data.Questions)})
                  console.log("After setting",this.state.news)
          })
         
