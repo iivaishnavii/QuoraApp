@@ -11,12 +11,13 @@ class News extends Component {
         upvotedItem: 0
     }
     componentDidMount(){
-        var token = localStorage.getItem("token")
+       // var token = localStorage.getItem("token")
         var url = `http://localhost:4000/getAllQuestions`
          console.log(url)  
-         axios.get(url,{headers : {"Authorization": `Bearer ${token}`}}).
+        // axios.get(url,{headers : {"Authorization": `Bearer ${token}`}}).
+        axios.get(url).
          then(response => {
-                 console.log("in then")
+                 console.log("in then get all questions")
                  console.log(response.data)
                  this.setState({news : this.state.news.concat(response.data)})
                  console.log("After setting",this.state.news[1])
