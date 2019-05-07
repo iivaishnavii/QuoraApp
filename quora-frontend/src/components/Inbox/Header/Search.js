@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Select from 'react-select'
 import {Link} from 'react-router-dom';
-import './Search.css'
+import './Search.css';
+import {rooturl, UIurl} from '../../../config/settings';
 
 
 class Search extends Component {
@@ -33,7 +34,7 @@ class Search extends Component {
 
     handleSearch=(e)=>{
         console.log("searching.."+this.state.questionid)
-        window.open('http://'+rooturl+':3000/answers', "_self")
+        window.open('http://'+ UIurl +':3000/answers', "_self")
     }
     
     render() { 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header'
 import News from '../news/News'
-import {rooturl} from '../../config/settings';
+import {rooturl, UIurl} from '../../config/settings';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import './topics.css'
@@ -45,8 +45,8 @@ topic = (e) => {
 }
 
     render() { 
-      let URL = "http://"+rooturl+":3000/newsfeed/topic/MachineLearning"
-      let bookmarkURL = "http://"+ rooturl+ ":3000/bookmarks"
+      let URL = "http://"+ UIurl +":3000/newsfeed/topic/MachineLearning"
+      let bookmarkURL = "http://"+ UIurl + ":3000/bookmarks"
 
         let topics = this.state.topics.map((topic) => {
             return(

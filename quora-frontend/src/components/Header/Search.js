@@ -3,7 +3,7 @@ import axios from 'axios'
 import Select from 'react-select'
 import {Link} from 'react-router-dom';
 import './Search.css'
-import {rooturl} from '../../config/settings';
+import {rooturl, UIurl} from '../../config/settings';
 import { ROOT_URL } from '../../config/URLsettings';
 
 
@@ -59,7 +59,7 @@ class Search extends Component {
 
     handleSearch=(e)=>{
         console.log("searching.."+this.state.questionid)
-        window.open('http://'+ rooturl +':3000/answers', "_self")
+        window.open('http://'+ UIurl +':3000/answers', "_self")
     }
     
     render() { 
@@ -109,10 +109,10 @@ class Search extends Component {
 
             <div  className = 'col-sm-4' >
             {this.state.type=='person'?
-            <a href={`${ROOT_URL}/profile/answers/${this.state.email}`}>
+            <a href={`/profile/answers/${this.state.email}`}>
             <button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></a> 
             :this.state.type=='topic'?
-            <a href={`${ROOT_URL}/newsfeed/topic/${this.state.topic}`}><button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></a> 
+            <a href={`/newsfeed/topic/${this.state.topic}`}><button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></a> 
             :<Link to={{pathname : "/answers",state :{'questionid':this.state.questionid}} }  > 
             <button class="btn btn-outline-success" style={{"fontSize":"medium", marginLeft: 150 , marginTop : 20}} type="submit" onClick={this.handleSearch}>Search </button></Link>  
             }        
