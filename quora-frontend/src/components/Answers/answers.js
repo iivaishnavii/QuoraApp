@@ -334,67 +334,7 @@ class answer extends Component {
 
     }
      
-      addcomment=(e)=>{		
-        this.setState({		
-            comment : e.target.value		
-        		
-        })		
-        console.log(this.state.comment)		
-        }		
-      handleaddcomment= (event) =>{		
-        console.log("buttonclicked")		
-        console.log(event)		
-    		
-       		
-        var url=  ROOT_URL + '/addcomments'		
-        var data = {		
-         "answerid" : event, 		
-         "email": this.state.Email,		
-         "comment":this.state.comment		
-        }		
-        console.log(url)		
-        console.log("data:",data)		
-        		
-         axios.post(url,data)		
-         .then(response => {		
-             console.log("got response:",response)		
-             var newResult = this.state.results;		
-             for(var i=0;i<newResult.length;++i){		
-                 if(newResult[i]._id==event){		
-                     console.log("Here in the id")		
-                     newResult[i]["comment"].push({username:"Shivani",comment:this.state.comment})		
-                 }		
-             }		
-             console.log("After the find ")		
-             console.log(newResult)		
-             this.setState({		
-                 results : newResult		
-             })		
-            //  window.location.href=window.location.href		
-         })		
-         .catch(response => {		
-            // console.log(response.toString())		
-         })		
-    		
-    		
-    }		
-    bookmark=(event)=>{		
-        console.log("Bookmarkclicked")		
-        console.log(event)		
-    		
-        var data = {		
-            "answerid" : event, 		
-            "Email": this.state.Email		
-        }		
-        var url=  ROOT_URL + '/bookmarkanswers'		
-        axios.post(url,data)		
-         .then(response => {		
-             console.log("got response:",response)		
-         })		
-         .catch(response => {		
-            // console.log(response.toString())		
-         })		
-    }
+      
     render() { 
         let redirectvar = null
         if(this.state.redirectToMyAnswersPage === true)
