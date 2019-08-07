@@ -1,3 +1,4 @@
 kafka-backend/node_modules
 quora-frontend/node_modules
 quorabackend/node_modules
+.DS_Store
